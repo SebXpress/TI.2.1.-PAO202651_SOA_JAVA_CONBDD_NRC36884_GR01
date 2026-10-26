@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Proyectos\\TI.2.1. PAO202651_SOA_JAVA_CONBDD_NRC36884_GR01\\04. CLIMOVIL\\EurekaBank.Movil\\obj\\Debug\\net10.0-android\\scopedcss\\bundle\\EurekaBank.Movil.styles.css",
+      "PackagePath": "staticwebassets\\EurekaBank.Movil.styles.css"
+    },
+    {
+      "Id": "C:\\Proyectos\\TI.2.1. PAO202651_SOA_JAVA_CONBDD_NRC36884_GR01\\04. CLIMOVIL\\EurekaBank.Movil\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Proyectos\\TI.2.1. PAO202651_SOA_JAVA_CONBDD_NRC36884_GR01\\04. CLIMOVIL\\EurekaBank.Movil\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Proyectos\\TI.2.1. PAO202651_SOA_JAVA_CONBDD_NRC36884_GR01\\04. CLIMOVIL\\EurekaBank.Movil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Proyectos\\TI.2.1. PAO202651_SOA_JAVA_CONBDD_NRC36884_GR01\\04. CLIMOVIL\\EurekaBank.Movil\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\sebas\\.nuget\\packages\\microsoft.aspnetcore.components.webview\\10.0.0\\staticwebassets\\blazor.modules.json",
+      "PackagePath": "staticwebassets\\_framework\\blazor.modules.json"
+    },
+    {
+      "Id": "C:\\Users\\sebas\\.nuget\\packages\\microsoft.aspnetcore.components.webview\\10.0.0\\staticwebassets\\blazor.webview.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webview.js"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0-android\\staticwebassets\\msbuild.EurekaBank.Movil.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0-android\\staticwebassets\\msbuild.EurekaBank.Movil.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0-android\\staticwebassets\\msbuild.build.EurekaBank.Movil.props",
+      "PackagePath": "build\\EurekaBank.Movil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0-android\\staticwebassets\\msbuild.buildMultiTargeting.EurekaBank.Movil.props",
+      "PackagePath": "buildMultiTargeting\\EurekaBank.Movil.props"
+    },
+    {
+      "Id": "obj\\Debug\\net10.0-android\\staticwebassets\\msbuild.buildTransitive.EurekaBank.Movil.props",
+      "PackagePath": "buildTransitive\\EurekaBank.Movil.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

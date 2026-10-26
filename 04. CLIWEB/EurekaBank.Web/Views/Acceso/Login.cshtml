@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - EurekaBank Web</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="height: 100vh;">
+
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 430px; border-radius: 18px;">
+        <div class="text-center mb-4">
+            <img src="~/img/imagen-front.jpg" alt="EurekaBank" class="img-fluid rounded-4 mb-3" style="max-height:150px; object-fit:cover;" />
+            <h2 class="fw-bold text-primary">EurekaBank</h2>
+            <p class="text-muted">Banca en Línea - Acceso Web</p>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger text-center" role="alert">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-controller="Acceso" asp-action="Login" method="post">
+            <div class="mb-3">
+                <label class="form-label font-weight-bold">Usuario</label>
+                <input type="text" name="usuario" class="form-control" placeholder="Ej: monster" required autofocus />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" name="clave" class="form-control" placeholder="Ej: monster69" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 mt-2">Iniciar sesión</button>
+        </form>
+    </div>
+
+</body>
+</html>

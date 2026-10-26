@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EurekaBank.Movil.MainPage"
+             Title="EurekaBank Móvil" BackgroundColor="White">
+    <ContentPage.Resources>
+        <Style TargetType="Label"><Setter Property="TextColor" Value="#212529" /></Style>
+        <Style TargetType="Entry"><Setter Property="TextColor" Value="#212529" /><Setter Property="PlaceholderColor" Value="#6c757d" /><Setter Property="BackgroundColor" Value="#f8f9fa" /></Style>
+        <Style TargetType="Picker"><Setter Property="TextColor" Value="#212529" /><Setter Property="TitleColor" Value="#6c757d" /><Setter Property="BackgroundColor" Value="#f8f9fa" /></Style>
+    </ContentPage.Resources>
+
+    <Grid>
+    <ScrollView x:Name="OperationsPanel" IsVisible="False">
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Encabezado -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="EurekaBank Mobile" FontSize="26" FontAttributes="Bold" TextColor="#0d6efd" />
+                <Button Grid.Column="1" Text="Cerrar sesión" Clicked="OnLogoutClicked" BackgroundColor="Transparent" TextColor="#dc3545" />
+            </Grid>
+
+            <!-- Indicador de Alerta / Resultado -->
+            <Frame x:Name="FrameResultado" IsVisible="False" CornerRadius="10" Padding="10">
+                <Label x:Name="LblResultado" TextColor="White" FontSize="14" HorizontalOptions="Center" />
+            </Frame>
+
+            <!-- Sección: Consulta de Saldo -->
+            <Border Stroke="#0d6efd" StrokeThickness="1" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Consulta de Saldo" FontSize="18" FontAttributes="Bold" TextColor="#0d6efd" />
+
+                    <Label Text="Seleccionar Cuenta:" />
+                    <Entry x:Name="PckCuentaSaldo" Placeholder="Cuenta de 8 dígitos" Keyboard="Numeric" MaxLength="8" />
+
+                    <Button Text="Consultar Saldo" Clicked="OnConsultarSaldoClicked" BackgroundColor="#0d6efd" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Sección: Depósito -->
+            <Border Stroke="#198754" StrokeThickness="1" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Registrar Depósito" FontSize="18" FontAttributes="Bold" TextColor="#198754" />
+
+                    <Label Text="Cuenta Destino:" />
+                    <Entry x:Name="PckCuentaDeposito" Placeholder="Cuenta de 8 dígitos" Keyboard="Numeric" MaxLength="8" />
+
+                    <Entry x:Name="TxtMontoDeposito" Placeholder="Monto ($)" Keyboard="Numeric" />
+                    <Label Text="Código de empleado:" />
+                    <Entry x:Name="TxtEmpleadoDeposito" Placeholder="Ej.: 0001" Keyboard="Numeric" MaxLength="4" />
+                    <Button Text="Realizar Depósito" Clicked="OnDepositoClicked" BackgroundColor="#198754" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Sección: Retiro -->
+            <Border Stroke="#ffc107" StrokeThickness="1" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Registrar Retiro" FontSize="18" FontAttributes="Bold" TextColor="#b8860b" />
+
+                    <Label Text="Cuenta Origen:" />
+                    <Entry x:Name="PckCuentaRetiro" Placeholder="Cuenta de 8 dígitos" Keyboard="Numeric" MaxLength="8" />
+
+                    <Entry x:Name="TxtMontoRetiro" Placeholder="Monto ($)" Keyboard="Numeric" />
+                    <Label Text="Código de empleado:" />
+                    <Entry x:Name="TxtEmpleadoRetiro" Placeholder="Ej.: 0001" Keyboard="Numeric" MaxLength="4" />
+                    <Button Text="Realizar Retiro" Clicked="OnRetiroClicked" BackgroundColor="#ffc107" TextColor="Black" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Stroke="#0dcaf0" StrokeThickness="1" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Registrar Transferencia" FontSize="18" FontAttributes="Bold" TextColor="#087990" />
+                    <Label Text="Cuenta origen:" />
+                    <Entry x:Name="PckCuentaOrigen" Placeholder="Cuenta de 8 dígitos" Keyboard="Numeric" MaxLength="8" />
+                    <Label Text="Cuenta destino:" />
+                    <Entry x:Name="PckCuentaDestino" Placeholder="Cuenta de 8 dígitos" Keyboard="Numeric" MaxLength="8" />
+                    <Entry x:Name="TxtMontoTransferencia" Placeholder="Monto ($)" Keyboard="Numeric" />
+                    <Label Text="Código de empleado:" />
+                    <Entry x:Name="TxtEmpleadoTransferencia" Placeholder="Ej.: 0001" Keyboard="Numeric" MaxLength="4" />
+                    <Button Text="Realizar Transferencia" Clicked="OnTransferenciaClicked" BackgroundColor="#0dcaf0" TextColor="White" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    <ScrollView x:Name="LoginPanel" SizeChanged="OnLoginSizeChanged">
+    <Border BackgroundColor="White" Padding="28" Stroke="#0d6efd" StrokeThickness="1" Margin="24" VerticalOptions="Center">
+        <VerticalStackLayout Spacing="14">
+            <Image Source="imagenfront.jpg" HeightRequest="130" Aspect="AspectFit" />
+            <Label Text="Iniciar sesión" FontSize="26" FontAttributes="Bold" TextColor="#0d6efd" HorizontalOptions="Center" />
+            <Border Stroke="#adb5bd" StrokeThickness="1" Padding="4"><Entry x:Name="TxtUsuario" Placeholder="Usuario" /></Border>
+            <Border Stroke="#adb5bd" StrokeThickness="1" Padding="4"><Entry x:Name="TxtClave" Placeholder="Contraseña" IsPassword="True" /></Border>
+            <Button x:Name="BtnIngresar" Text="Ingresar" Clicked="OnLoginClicked" BackgroundColor="#0d6efd" TextColor="White" />
+        </VerticalStackLayout>
+    </Border>
+    </ScrollView>
+    </Grid>
+
+</ContentPage>

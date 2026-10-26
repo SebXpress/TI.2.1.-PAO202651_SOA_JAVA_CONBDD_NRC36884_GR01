@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "EurekaBank.Escritorio/1.0.0": {
+        "dependencies": {
+          "EurekaBank": "1.0.0"
+        },
+        "runtime": {
+          "EurekaBank.Escritorio.dll": {}
+        }
+      },
+      "EurekaBank/1.0.0": {
+        "runtime": {
+          "EurekaBank.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EurekaBank.Escritorio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EurekaBank/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

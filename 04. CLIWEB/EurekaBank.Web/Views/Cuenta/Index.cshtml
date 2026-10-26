@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Panel Bancario - EurekaBank";
+}
+
+<div class="container mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+        <h2 class="mb-0">EurekaBank <small class="text-muted fs-6">| @ViewBag.Usuario</small></h2>
+        <a asp-controller="Acceso" asp-action="Logout" class="btn btn-outline-danger btn-sm">Cerrar Sesión</a>
+    </div>
+    <nav class="nav nav-pills nav-fill bg-light rounded-3 p-2 mb-4">
+        <button type="button" class="nav-link" data-op="saldo" onclick="mostrarOperacion('saldo')">Saldo</button>
+        <button type="button" class="nav-link" data-op="deposito" onclick="mostrarOperacion('deposito')">Depósito</button>
+        <button type="button" class="nav-link" data-op="retiro" onclick="mostrarOperacion('retiro')">Retiro</button>
+        <button type="button" class="nav-link" data-op="transferencia" onclick="mostrarOperacion('transferencia')">Transferencia</button>
+    </nav>
+
+    <div class="alert alert-light border small mb-4"><strong>Token de sesión:</strong> <code>@ViewBag.Token</code></div>
+
+    @if (ViewBag.Resultado != null)
+    {
+        <div class="alert alert-@ViewBag.TipoResultado alert-dismissible fade show" role="alert">
+            <strong>Resultado:</strong> @ViewBag.Resultado
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="row g-4">
+        <!-- 1. Consulta de Saldo -->
+        <div id="op-saldo" class="col-md-6 operacion">
+            <div class="card shadow-sm h-100 border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Consultar Saldo</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Cuenta" asp-action="ConsultarSaldo" method="post">
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Seleccionar Cuenta</label>
+                            <input name="cuenta" class="form-control" placeholder="Número de cuenta" pattern="[0-9]{8}" maxlength="8" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Consultar Saldo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Depósito -->
+        <div id="op-deposito" class="col-md-6 operacion d-none">
+            <div class="card shadow-sm h-100 border-success">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Registrar Depósito</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Cuenta" asp-action="RegistrarDeposito" method="post">
+                        <div class="mb-2">
+                            <label class="form-label font-weight-bold">Cuenta Destino</label>
+                            <input name="cuenta" class="form-control" placeholder="Número de cuenta" pattern="[0-9]{8}" maxlength="8" required />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Monto ($)</label>
+                            <input type="number" step="0.01" min="0.01" name="monto" class="form-control" placeholder="Ej: 100.00" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Código Empleado</label>
+                            <input type="text" name="empleado" class="form-control" placeholder="Ej.: 0001" pattern="[0-9]{4}" maxlength="4" required />
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Realizar Depósito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Retiro -->
+        <div id="op-retiro" class="col-md-6 operacion d-none">
+            <div class="card shadow-sm h-100 border-warning">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">Registrar Retiro</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Cuenta" asp-action="RegistrarRetiro" method="post">
+                        <div class="mb-2">
+                            <label class="form-label font-weight-bold">Cuenta Origen</label>
+                            <input name="cuenta" class="form-control" placeholder="Número de cuenta" pattern="[0-9]{8}" maxlength="8" required />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Monto ($)</label>
+                            <input type="number" step="0.01" min="0.01" name="monto" class="form-control" placeholder="Ej: 50.00" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Código Empleado</label>
+                            <input type="text" name="empleado" class="form-control" placeholder="Ej.: 0001" pattern="[0-9]{4}" maxlength="4" required />
+                        </div>
+                        <button type="submit" class="btn btn-warning text-dark w-100">Realizar Retiro</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Transferencia -->
+        <div id="op-transferencia" class="col-md-6 operacion d-none">
+            <div class="card shadow-sm h-100 border-info">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">Registrar Transferencia</h5>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Cuenta" asp-action="RegistrarTransferencia" method="post">
+                        <div class="mb-2">
+                            <label class="form-label font-weight-bold">Cuenta Origen</label>
+                            <input name="cuentaOrigen" class="form-control" placeholder="Cuenta origen" pattern="[0-9]{8}" maxlength="8" required />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label font-weight-bold">Cuenta Destino</label>
+                            <input name="cuentaDestino" class="form-control" placeholder="Cuenta destino" pattern="[0-9]{8}" maxlength="8" required />
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Monto ($)</label>
+                            <input type="number" step="0.01" min="0.01" name="monto" class="form-control" placeholder="Ej: 25.00" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Código Empleado</label>
+                            <input type="text" name="empleado" class="form-control" placeholder="Ej.: 0001" pattern="[0-9]{4}" maxlength="4" required />
+                        </div>
+                        <button type="submit" class="btn btn-info text-white w-100">Realizar Transferencia</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+<script>
+function mostrarOperacion(valor) {
+  document.querySelectorAll('.operacion').forEach(x => x.classList.add('d-none'));
+  document.querySelectorAll('[data-op]').forEach(x => x.classList.toggle('active', x.dataset.op === valor));
+  document.getElementById('op-' + valor).classList.remove('d-none');
+}
+document.addEventListener('DOMContentLoaded', () => mostrarOperacion('@(ViewBag.Operacion ?? "saldo")'));
+</script>
+}
