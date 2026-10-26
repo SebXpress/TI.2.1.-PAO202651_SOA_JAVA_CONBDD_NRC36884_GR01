@@ -1,6 +1,8 @@
 package ec.edu.monster.ws;
 
 import ec.edu.monster.dao.EurekaBankDAO;
+import ec.edu.monster.modelo.Movimiento;
+import java.util.List;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
@@ -21,6 +23,11 @@ public class EurekaBankWS {
     @WebMethod(operationName = "consultarSaldo")
     public double consultarSaldo(@WebParam(name = "cuenta") String cuenta) throws Exception {
         return dao.consultarSaldo(cuenta);
+    }
+
+    @WebMethod(operationName = "listarMovimientos")
+    public List<Movimiento> listarMovimientos(@WebParam(name = "cuenta") String cuenta) throws Exception {
+        return dao.listarMovimientos(cuenta);
     }
 
     @WebMethod(operationName = "registrarDeposito")
